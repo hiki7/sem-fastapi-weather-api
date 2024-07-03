@@ -13,6 +13,9 @@ def get_weather(city: str):
 
     data = response.json()
 
+    if response.status_code != 200:
+        return {"error": "City not found"}
+
     return {
         "city": data['name'],
         "temperature": data['main']['temp']
